@@ -9,13 +9,13 @@
     <description>Full audio of major recent speeches by prospective Democratic presidential primary candidates, each with a short introduction explaining who the speaker is and the context of the speech — where, when, and how it was billed and received — plus a brief recap at the end. New episodes as the field gives notable speeches.</description>
     <itunes:subtitle>Major speeches from the prospective 2028 Democratic field</itunes:subtitle>
     <itunes:author>Speeches: 2028 Dem Prez Primary</itunes:author>
-
+    <itunes:owner><itunes:name>Speeches: 2028 Dem Prez Primary</itunes:name><itunes:email>speechpodcasts@gmail.com</itunes:email></itunes:owner>
     <itunes:image href="https://speechpods.github.io/speeches-2028/cover.jpg"/>
     <image><url>https://speechpods.github.io/speeches-2028/cover.jpg</url><title>Speeches: 2028 Dem Prez Primary</title><link>https://speechpods.github.io/speeches-2028/</link></image>
     <itunes:category text="News"><itunes:category text="Politics"/></itunes:category>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
-    <lastBuildDate>Fri, 12 Jun 2026 15:32:35 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 15:58:21 GMT</lastBuildDate>
     <item>
       <title>Jon Ossoff — "Something is happening in Georgia" (May 31, 2026)</title>
       <itunes:author>Speeches: 2028 Dem Prez Primary</itunes:author>
