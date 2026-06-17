@@ -10,6 +10,7 @@
   :root { --navy:#101830; --cream:#F4EEE0; --red:#BE3138; }
   * { box-sizing:border-box; margin:0; }
   body { background:var(--navy); color:var(--cream); font-family:"Avenir Next","Segoe UI",system-ui,sans-serif; line-height:1.55; }
+  a { color:inherit; }
   header { padding:64px 24px 40px; max-width:980px; margin:0 auto; border-bottom:6px solid var(--red); }
   h1 { font-size:clamp(56px,10vw,120px); font-weight:900; letter-spacing:-.02em; line-height:.95; text-transform:uppercase; }
   h1 span { color:var(--red); display:block; font-size:.46em; line-height:1.1; }
@@ -21,15 +22,34 @@
   main { max-width:980px; margin:0 auto; padding:40px 24px 80px; }
   .ep { display:flex; gap:24px; padding:28px 0; border-bottom:1px solid #2a3a66; }
   .ep img { width:170px; height:170px; border-radius:10px; flex-shrink:0; }
-  .ep h3 { font-size:21px; }
+  .ep h3 { font-size:21px; } .ep h3 a { text-decoration:none; }
+  .ep h3 a:hover { color:var(--red); filter:brightness(1.5); }
   .date { color:var(--red); font-weight:700; font-size:14px; margin:4px 0 8px; filter:brightness(1.5); }
   audio { width:100%; margin-top:12px; }
-  .src { font-size:13px; margin-top:8px; } .src a { color:var(--cream); opacity:.7; }
+  .src { font-size:13px; margin-top:8px; } .src a { opacity:.7; }
   footer { max-width:980px; margin:0 auto; padding:0 24px 60px; font-size:13px; opacity:.65; }
   nav.net { max-width:980px; margin:0 auto; padding:14px 24px 0; font-size:14px; opacity:.85; }
-  nav.net a { color:var(--cream); margin-right:14px; }
+  nav.net a { margin-right:14px; }
   nav.net a.here { color:var(--red); filter:brightness(1.5); font-weight:700; }
-  @media (max-width:640px) { .ep { flex-direction:column; } .ep img { width:100%; height:auto; } }
+  .crumb { max-width:980px; margin:0 auto; padding:24px 24px 0; font-size:14px; opacity:.8; }
+  .crumb a { text-decoration:none; }
+  /* episode page */
+  .ephead { max-width:980px; margin:0 auto; padding:24px 24px 8px; display:flex; gap:28px; flex-wrap:wrap; }
+  .ephead img { width:260px; height:260px; border-radius:12px; flex-shrink:0; }
+  .ephead .info { flex:1; min-width:280px; }
+  .ephead h1 { font-size:clamp(28px,4vw,40px); text-transform:none; line-height:1.1; letter-spacing:-.01em; }
+  .ephead .body { font-size:18px; margin-top:16px; opacity:.92; }
+  /* signup */
+  .signup { max-width:980px; margin:8px auto 0; padding:32px 24px; border-top:1px solid #2a3a66; }
+  .signup h3 { font-size:22px; margin-bottom:6px; }
+  .signup p.note { opacity:.7; font-size:14px; margin-bottom:16px; }
+  .signup form { display:flex; gap:10px; flex-wrap:wrap; max-width:480px; }
+  .signup input { flex:1; min-width:200px; padding:13px 16px; border-radius:8px; border:1px solid #2a3a66; background:#1d2a4d; color:var(--cream); font-size:16px; }
+  .signup button { background:var(--red); color:var(--cream); border:none; padding:13px 24px; border-radius:8px; font-weight:700; font-size:16px; cursor:pointer; }
+  .signup button:hover { filter:brightness(1.1); }
+  .signup .ok { display:none; font-size:18px; font-weight:700; color:var(--cream); }
+  .signup .ok.show { display:block; }
+  @media (max-width:640px) { .ep { flex-direction:column; } .ep img { width:100%; height:auto; } .ephead img { width:100%; height:auto; } }
 </style>
 </head>
 <body>
@@ -41,13 +61,36 @@
     <a href="feed.xml">RSS Feed</a>
     <code>https://speechpods.github.io/speeches-2028/feed.xml</code>
   </div>
-  <p class="sub" style="font-size:14px;margin-top:14px;opacity:.7">Paste the feed URL into any podcast app (Overcast, Pocket Casts, Apple Podcasts → Add Show by URL).</p>
+  <p class="sub" style="font-size:14px;margin-top:14px;opacity:.7">Paste the feed URL into any podcast app (Overcast, Pocket Casts, Apple Podcasts → Add Show by URL), or find us on Spotify and Apple Podcasts.</p>
 </header>
+  <section class="signup">
+    <h3>Get notified when new episodes go up</h3>
+    <p class="note">One short email when a new speech lands. No spam, unsubscribe anytime.</p>
+    <form id="signup">
+      <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address">
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="ok" id="signup-ok">✓ You're subscribed — we'll email you when new speeches land.</p>
+  </section>
+  <script>
+  (function(){
+    var f=document.getElementById('signup'), ok=document.getElementById('signup-ok');
+    if(!f) return;
+    var EP="https://formspree.io/f/REPLACE_WITH_FORM_ID";
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var show=function(){ f.style.display='none'; ok.className='ok show'; };
+      if(!EP || EP.indexOf('REPLACE')>-1){ show(); return; }
+      fetch(EP,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
+        .then(show).catch(show);
+    });
+  })();
+  </script>
 <main>
       <article class="ep">
-        <img src="ossoff-georgia-2026.jpg" alt="Episode 17 artwork: Jon Ossoff" loading="lazy">
+        <a href="e/ossoff-georgia-2026.html"><img src="ossoff-georgia-2026.jpg" alt="Episode 17 artwork: Jon Ossoff" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 17 — Jon Ossoff — "Something is happening in Georgia" (May 31, 2026)</h3>
+          <h3><a href="e/ossoff-georgia-2026.html">Ep. 17 — Jon Ossoff — "Something is happening in Georgia" (May 31, 2026)</a></h3>
           <p class="date">May 31, 2026 · 0:32:37</p>
           <p>Sen. Jon Ossoff — the only Democratic senator up for re-election in 2026 in a state Trump won — rallies supporters in Atlanta on May 31, 2026, declaring 'something is happening in Georgia' in the marquee Senate race of the midterms.</p>
           <audio controls preload="none" src="audio/ossoff-georgia-2026.mp3"></audio>
@@ -55,9 +98,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="aoc-missoula-2026.jpg" alt="Episode 16 artwork: Alexandria Ocasio-Cortez" loading="lazy">
+        <a href="e/aoc-missoula-2026.html"><img src="aoc-missoula-2026.jpg" alt="Episode 16 artwork: Alexandria Ocasio-Cortez" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 16 — Alexandria Ocasio-Cortez — Rally in Missoula, Montana (May 30, 2026)</h3>
+          <h3><a href="e/aoc-missoula-2026.html">Ep. 16 — Alexandria Ocasio-Cortez — Rally in Missoula, Montana (May 30, 2026)</a></h3>
           <p class="date">May 30, 2026 · 0:24:38</p>
           <p>Rep. Alexandria Ocasio-Cortez headlines a rally in Missoula, Montana, on May 30, 2026, for congressional candidate Sam Forstag — attacking corporate influence in politics and making the case for grassroots organizing across red and blue states.</p>
           <audio controls preload="none" src="audio/aoc-missoula-2026.mp3"></audio>
@@ -65,9 +108,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="murphy-fp4a-2026.jpg" alt="Episode 15 artwork: Chris Murphy" loading="lazy">
+        <a href="e/murphy-fp4a-2026.html"><img src="murphy-fp4a-2026.jpg" alt="Episode 15 artwork: Chris Murphy" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 15 — Chris Murphy — Keynote at Foreign Policy for America's Leadership Summit (May 2026)</h3>
+          <h3><a href="e/murphy-fp4a-2026.html">Ep. 15 — Chris Murphy — Keynote at Foreign Policy for America's Leadership Summit (May 2026)</a></h3>
           <p class="date">May 19, 2026 · 0:14:45</p>
           <p>Sen. Chris Murphy delivers the keynote at Foreign Policy for America's 2026 Leadership Summit in Washington — his case for a foreign policy that serves democracy at home and abroad.</p>
           <audio controls preload="none" src="audio/murphy-fp4a-2026.mp3"></audio>
@@ -75,9 +118,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="warnock-gatech-2026.jpg" alt="Episode 14 artwork: Raphael Warnock" loading="lazy">
+        <a href="e/warnock-gatech-2026.html"><img src="warnock-gatech-2026.jpg" alt="Episode 14 artwork: Raphael Warnock" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 14 — Raphael Warnock — Georgia Tech commencement address (May 7, 2026)</h3>
+          <h3><a href="e/warnock-gatech-2026.html">Ep. 14 — Raphael Warnock — Georgia Tech commencement address (May 7, 2026)</a></h3>
           <p class="date">May 7, 2026 · 0:17:03</p>
           <p>Sen. Rev. Raphael Warnock delivers Georgia Tech's spring commencement address at McCamish Pavilion on May 7, 2026, urging graduates to hold onto hope, challenge the status quo, and pursue Martin Luther King Jr.'s 'Beloved Community.'</p>
           <audio controls preload="none" src="audio/warnock-gatech-2026.mp3"></audio>
@@ -85,9 +128,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="whitmer-msu-2026.jpg" alt="Episode 13 artwork: Gretchen Whitmer" loading="lazy">
+        <a href="e/whitmer-msu-2026.html"><img src="whitmer-msu-2026.jpg" alt="Episode 13 artwork: Gretchen Whitmer" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 13 — Gretchen Whitmer — Michigan State commencement address (May 1, 2026)</h3>
+          <h3><a href="e/whitmer-msu-2026.html">Ep. 13 — Gretchen Whitmer — Michigan State commencement address (May 1, 2026)</a></h3>
           <p class="date">May 1, 2026 · 0:15:44</p>
           <p>Gov. Gretchen Whitmer delivers MSU's spring commencement address at the Breslin Center on May 1, 2026 — her final commencement as governor, at her alma mater — offering graduates three lessons and honoring the victims of the 2023 campus shooting.</p>
           <audio controls preload="none" src="audio/whitmer-msu-2026.mp3"></audio>
@@ -95,9 +138,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="harris-littlerock-2026.jpg" alt="Episode 12 artwork: Kamala Harris" loading="lazy">
+        <a href="e/harris-littlerock-2026.html"><img src="harris-littlerock-2026.jpg" alt="Episode 12 artwork: Kamala Harris" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 12 — Kamala Harris — Keynote at the Fisher Shackelford Dinner, Little Rock (Apr 25, 2026)</h3>
+          <h3><a href="e/harris-littlerock-2026.html">Ep. 12 — Kamala Harris — Keynote at the Fisher Shackelford Dinner, Little Rock (Apr 25, 2026)</a></h3>
           <p class="date">April 25, 2026 · 0:27:07</p>
           <p>In her first keynote since the 2024 election, former Vice President Kamala Harris addresses the Democratic Party of Arkansas' Fisher Shackelford Dinner in Little Rock on April 25, 2026 — calling for a 'revival of the American dream' and accusing the administration of ignoring the cost of living.</p>
           <audio controls preload="none" src="audio/harris-littlerock-2026.mp3"></audio>
@@ -105,9 +148,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="booker-michigan-2026.jpg" alt="Episode 11 artwork: Cory Booker" loading="lazy">
+        <a href="e/booker-michigan-2026.html"><img src="booker-michigan-2026.jpg" alt="Episode 11 artwork: Cory Booker" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 11 — Cory Booker — Michigan Democratic Party luncheon (Apr 18, 2026)</h3>
+          <h3><a href="e/booker-michigan-2026.html">Ep. 11 — Cory Booker — Michigan Democratic Party luncheon (Apr 18, 2026)</a></h3>
           <p class="date">April 18, 2026 · 0:28:55</p>
           <p>Sen. Cory Booker speaks to a Michigan Democratic Party luncheon on April 18, 2026, calling on Democrats to 'stand for our democracy,' turn out for the midterms, and 'be the hope that people need.'</p>
           <audio controls preload="none" src="audio/booker-michigan-2026.mp3"></audio>
@@ -115,9 +158,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="khanna-npc-2026.jpg" alt="Episode 10 artwork: Ro Khanna" loading="lazy">
+        <a href="e/khanna-npc-2026.html"><img src="khanna-npc-2026.jpg" alt="Episode 10 artwork: Ro Khanna" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 10 — Ro Khanna — "A New Economic Patriotism" at the National Press Club (Apr 14, 2026)</h3>
+          <h3><a href="e/khanna-npc-2026.html">Ep. 10 — Ro Khanna — "A New Economic Patriotism" at the National Press Club (Apr 14, 2026)</a></h3>
           <p class="date">April 14, 2026 · 0:17:54</p>
           <p>Rep. Ro Khanna delivers a National Press Club Headliners address on April 14, 2026 — 'Beyond the Epstein Class: A New Economic Patriotism' — his case for economic reform, transparency, and a new tech social contract.</p>
           <audio controls preload="none" src="audio/khanna-npc-2026.mp3"></audio>
@@ -125,9 +168,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="pritzker-launch-2026.jpg" alt="Episode 9 artwork: JB Pritzker" loading="lazy">
+        <a href="e/pritzker-launch-2026.html"><img src="pritzker-launch-2026.jpg" alt="Episode 9 artwork: JB Pritzker" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 9 — JB Pritzker — Reelection campaign launch (Mar 18, 2026)</h3>
+          <h3><a href="e/pritzker-launch-2026.html">Ep. 9 — JB Pritzker — Reelection campaign launch (Mar 18, 2026)</a></h3>
           <p class="date">March 18, 2026 · 0:13:06</p>
           <p>Gov. JB Pritzker launches his bid for a third term on Illinois primary night, March 18, 2026 — blasting Donald Trump as the 'Commander-in-Thief' and urging Democrats to fight.</p>
           <audio controls preload="none" src="audio/pritzker-launch-2026.mp3"></audio>
@@ -135,9 +178,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="vanhollen-jstreet-2026.jpg" alt="Episode 8 artwork: Chris Van Hollen" loading="lazy">
+        <a href="e/vanhollen-jstreet-2026.html"><img src="vanhollen-jstreet-2026.jpg" alt="Episode 8 artwork: Chris Van Hollen" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 8 — Chris Van Hollen — J Street National Convention (Mar 2026)</h3>
+          <h3><a href="e/vanhollen-jstreet-2026.html">Ep. 8 — Chris Van Hollen — J Street National Convention (Mar 2026)</a></h3>
           <p class="date">March 2, 2026 · 0:29:02</p>
           <p>Sen. Chris Van Hollen addresses J Street's 2026 National Convention in Washington — a blunt speech on U.S.–Israel policy, international law, and his sharp criticism of AIPAC's role in American politics.</p>
           <audio controls preload="none" src="audio/vanhollen-jstreet-2026.mp3"></audio>
@@ -145,9 +188,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="buttigieg-nh-2026.jpg" alt="Episode 7 artwork: Pete Buttigieg" loading="lazy">
+        <a href="e/buttigieg-nh-2026.html"><img src="buttigieg-nh-2026.jpg" alt="Episode 7 artwork: Pete Buttigieg" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 7 — Pete Buttigieg — "Then What?" speech in New Hampshire (Feb 21, 2026)</h3>
+          <h3><a href="e/buttigieg-nh-2026.html">Ep. 7 — Pete Buttigieg — "Then What?" speech in New Hampshire (Feb 21, 2026)</a></h3>
           <p class="date">February 21, 2026 · 0:17:31</p>
           <p>Pete Buttigieg speaks to New Hampshire Democrats on February 21, 2026, ahead of the midterms — challenging the audience to imagine the day Donald Trump no longer dominates American politics and asking: 'Then what?'</p>
           <audio controls preload="none" src="audio/buttigieg-nh-2026.mp3"></audio>
@@ -155,9 +198,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="moore-sots-2026.jpg" alt="Episode 6 artwork: Wes Moore" loading="lazy">
+        <a href="e/moore-sots-2026.html"><img src="moore-sots-2026.jpg" alt="Episode 6 artwork: Wes Moore" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 6 — Wes Moore — Maryland State of the State (Feb 11, 2026)</h3>
+          <h3><a href="e/moore-sots-2026.html">Ep. 6 — Wes Moore — Maryland State of the State (Feb 11, 2026)</a></h3>
           <p class="date">February 11, 2026 · 0:59:27</p>
           <p>Gov. Wes Moore delivers his fourth State of the State address in Annapolis on February 11, 2026 — pledging to close a $1.4 billion deficit without new taxes, celebrating a near-50% drop in statewide homicides, and making transit-oriented housing the keystone of his agenda.</p>
           <audio controls preload="none" src="audio/moore-sots-2026.mp3"></audio>
@@ -165,9 +208,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="shapiro-budget-2026.jpg" alt="Episode 5 artwork: Josh Shapiro" loading="lazy">
+        <a href="e/shapiro-budget-2026.html"><img src="shapiro-budget-2026.jpg" alt="Episode 5 artwork: Josh Shapiro" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 5 — Josh Shapiro — Pennsylvania budget address (Feb 3, 2026)</h3>
+          <h3><a href="e/shapiro-budget-2026.html">Ep. 5 — Josh Shapiro — Pennsylvania budget address (Feb 3, 2026)</a></h3>
           <p class="date">February 3, 2026 · 1:24:28</p>
           <p>Gov. Josh Shapiro presents his fourth executive budget — a $53.3 billion plan — to Pennsylvania's divided legislature on February 3, 2026, calling for more money for the poorest schools, public transit, a higher minimum wage, and cannabis legalization.</p>
           <audio controls preload="none" src="audio/shapiro-budget-2026.mp3"></audio>
@@ -175,9 +218,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="polis-sots-2026.jpg" alt="Episode 4 artwork: Jared Polis" loading="lazy">
+        <a href="e/polis-sots-2026.html"><img src="polis-sots-2026.jpg" alt="Episode 4 artwork: Jared Polis" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 4 — Jared Polis — Colorado State of the State (Jan 15, 2026)</h3>
+          <h3><a href="e/polis-sots-2026.html">Ep. 4 — Jared Polis — Colorado State of the State (Jan 15, 2026)</a></h3>
           <p class="date">January 15, 2026 · 1:24:24</p>
           <p>Term-limited Gov. Jared Polis delivers his eighth and final Colorado State of the State address at the Capitol in Denver on January 15, 2026 — telling lawmakers 'the work continues' on education, affordability, and the state's agenda amid federal pressure.</p>
           <audio controls preload="none" src="audio/polis-sots-2026.mp3"></audio>
@@ -185,9 +228,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="newsom-sots-2026.jpg" alt="Episode 3 artwork: Gavin Newsom" loading="lazy">
+        <a href="e/newsom-sots-2026.html"><img src="newsom-sots-2026.jpg" alt="Episode 3 artwork: Gavin Newsom" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 3 — Gavin Newsom — California State of the State (Jan 8, 2026)</h3>
+          <h3><a href="e/newsom-sots-2026.html">Ep. 3 — Gavin Newsom — California State of the State (Jan 8, 2026)</a></h3>
           <p class="date">January 8, 2026 · 1:05:40</p>
           <p>Gov. Gavin Newsom delivers his eighth and final State of the State address before a joint session of the California Legislature in Sacramento on January 8, 2026 — casting California as a 'beacon' and a foil to the Trump agenda, and touting his record on wages, homelessness, crime, and health-care affordability.</p>
           <audio controls preload="none" src="audio/newsom-sots-2026.mp3"></audio>
@@ -195,9 +238,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="beshear-sotc-2026.jpg" alt="Episode 2 artwork: Andy Beshear" loading="lazy">
+        <a href="e/beshear-sotc-2026.html"><img src="beshear-sotc-2026.jpg" alt="Episode 2 artwork: Andy Beshear" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 2 — Andy Beshear — Kentucky State of the Commonwealth (Jan 7, 2026)</h3>
+          <h3><a href="e/beshear-sotc-2026.html">Ep. 2 — Andy Beshear — Kentucky State of the Commonwealth (Jan 7, 2026)</a></h3>
           <p class="date">January 7, 2026 · 0:42:12</p>
           <p>Gov. Andy Beshear delivers his seventh State of the Commonwealth address — and his final budget address — at the Thomas D. Clark Center for Kentucky History in Frankfort on January 7, 2026, touting Kentucky's economy and calling for 'keeping the American Dream alive.'</p>
           <audio controls preload="none" src="audio/beshear-sotc-2026.mp3"></audio>
@@ -205,9 +248,9 @@
         </div>
       </article>
       <article class="ep">
-        <img src="slotkin-cfr-2025.jpg" alt="Episode 1 artwork: Elissa Slotkin" loading="lazy">
+        <a href="e/slotkin-cfr-2025.html"><img src="slotkin-cfr-2025.jpg" alt="Episode 1 artwork: Elissa Slotkin" loading="lazy"></a>
         <div class="meta">
-          <h3>Ep. 1 — Elissa Slotkin — "A New Vision for America's National Security" (Sep 2025)</h3>
+          <h3><a href="e/slotkin-cfr-2025.html">Ep. 1 — Elissa Slotkin — "A New Vision for America's National Security" (Sep 2025)</a></h3>
           <p class="date">September 4, 2025 · 0:19:07</p>
           <p>Sen. Elissa Slotkin, the former CIA analyst turned Michigan senator, delivers her signature foreign-policy address at the Council on Foreign Relations in September 2025 — a 'new vision for America's national security' spanning defense, alliances, and economic security.</p>
           <audio controls preload="none" src="audio/slotkin-cfr-2025.mp3"></audio>
