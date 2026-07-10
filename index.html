@@ -76,17 +76,66 @@
   (function(){
     var f=document.getElementById('signup'), ok=document.getElementById('signup-ok');
     if(!f) return;
-    var EP="https://formspree.io/f/REPLACE_WITH_FORM_ID";
+    var EP="https://docs.google.com/forms/d/e/1FAIpQLSfNW_2jFjOcqIM30r9Goxh1jR3_kmD_AJLbCndHWnWNiEL04A/formResponse", GFIELD="entry.1045781291";
     f.addEventListener('submit',function(e){
       e.preventDefault();
       var show=function(){ f.style.display='none'; ok.className='ok show'; };
+      var email=f.email.value;
       if(!EP || EP.indexOf('REPLACE')>-1){ show(); return; }
-      fetch(EP,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
-        .then(show).catch(show);
+      if(GFIELD){
+        // Google Forms: fire-and-forget urlencoded POST (response is opaque)
+        var body=new URLSearchParams(); body.append(GFIELD, email);
+        fetch(EP,{method:'POST',mode:'no-cors',
+          headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
+          .then(show).catch(show);
+      } else {
+        fetch(EP,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
+          .then(show).catch(show);
+      }
     });
   })();
   </script>
 <main>
+      <article class="ep">
+        <a href="e/emanuel-israel-2026.html"><img src="emanuel-israel-2026.jpg" alt="Episode 21 artwork: Rahm Emanuel" loading="lazy"></a>
+        <div class="meta">
+          <h3><a href="e/emanuel-israel-2026.html">Ep. 21 — Rahm Emanuel — Address on U.S.–Israel relations at Tel Aviv University (Jul 8, 2026)</a></h3>
+          <p class="date">July 8, 2026 · 0:34:13</p>
+          <p>Former Chicago mayor and ambassador to Japan Rahm Emanuel delivers a landmark address at Tel Aviv University on July 8, 2026 — telling a longtime ally 'the most important thing a true friend can do is tell the truth,' charging that Netanyahu has led Israel to a 'dead end,' warning it risks becoming a regional pariah, and proposing conditions on U.S. support.</p>
+          <audio controls preload="none" src="audio/emanuel-israel-2026.mp3"></audio>
+          <p class="src"><a href="https://www.youtube.com/watch?v=n8QMh9PZbiw" target="_blank" rel="noopener">Original video source</a></p>
+        </div>
+      </article>
+      <article class="ep">
+        <a href="e/newsom-july4-2026.html"><img src="newsom-july4-2026.jpg" alt="Episode 20 artwork: Gavin Newsom" loading="lazy"></a>
+        <div class="meta">
+          <h3><a href="e/newsom-july4-2026.html">Ep. 20 — Gavin Newsom — Fourth of July address (Jul 4, 2026)</a></h3>
+          <p class="date">July 4, 2026 · 0:08:45</p>
+          <p>On America's 250th Independence Day, Gov. Gavin Newsom delivers an address framing the nation's founding promise — that governments derive their power from the consent of the governed — as under threat, and calling on Americans to defend democracy and voting rights.</p>
+          <audio controls preload="none" src="audio/newsom-july4-2026.mp3"></audio>
+          <p class="src"><a href="https://www.youtube.com/watch?v=vGfSx8LYDq0" target="_blank" rel="noopener">Original video source</a></p>
+        </div>
+      </article>
+      <article class="ep">
+        <a href="e/moore-patriotism-2026.html"><img src="moore-patriotism-2026.jpg" alt="Episode 19 artwork: Wes Moore" loading="lazy"></a>
+        <div class="meta">
+          <h3><a href="e/moore-patriotism-2026.html">Ep. 19 — Wes Moore — "The Work of Patriotism" Independence Day address (Jul 4, 2026)</a></h3>
+          <p class="date">July 4, 2026 · 0:19:15</p>
+          <p>Gov. Wes Moore delivers a Fourth of July address, 'The Work of Patriotism,' from the Maryland State House on America's 250th anniversary — recasting patriotism as taking ownership of what America can become, and widely read as counterprogramming to President Trump's holiday events.</p>
+          <audio controls preload="none" src="audio/moore-patriotism-2026.mp3"></audio>
+          <p class="src"><a href="https://www.youtube.com/watch?v=LXJhipSiRGU" target="_blank" rel="noopener">Original video source</a></p>
+        </div>
+      </article>
+      <article class="ep">
+        <a href="e/mamdani-july4-2026.html"><img src="mamdani-july4-2026.jpg" alt="Episode 18 artwork: Zohran Mamdani" loading="lazy"></a>
+        <div class="meta">
+          <h3><a href="e/mamdani-july4-2026.html">Ep. 18 — Zohran Mamdani — Independence Day address at City Hall (Jul 4, 2026)</a></h3>
+          <p class="date">July 4, 2026 · 0:14:50</p>
+          <p>A special inclusion — Mayor Zohran Mamdani is not a 2028 presidential candidate, but his Fourth of July address at New York City Hall, marking America's 250th anniversary, made waves nationally: a pro-immigration counter-vision to President Trump's, delivered from behind a replica of George Washington's desk.</p>
+          <audio controls preload="none" src="audio/mamdani-july4-2026.mp3"></audio>
+          <p class="src"><a href="https://www.youtube.com/watch?v=XcxRUkGAM-w" target="_blank" rel="noopener">Original video source</a></p>
+        </div>
+      </article>
       <article class="ep">
         <a href="e/ossoff-georgia-2026.html"><img src="ossoff-georgia-2026.jpg" alt="Episode 17 artwork: Jon Ossoff" loading="lazy"></a>
         <div class="meta">
