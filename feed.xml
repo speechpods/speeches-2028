@@ -15,7 +15,7 @@
     <itunes:category text="News"><itunes:category text="Politics"/></itunes:category>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
-    <lastBuildDate>Fri, 10 Jul 2026 20:23:20 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 20:46:02 GMT</lastBuildDate>
     <item>
       <title>Rahm Emanuel — Address on U.S.–Israel relations at Tel Aviv University (Jul 8, 2026)</title>
       <itunes:author>Speeches: 2028 Dem Prez Primary</itunes:author>
@@ -27,7 +27,7 @@
       <pubDate>Wed, 08 Jul 2026 19:00:00 +0300</pubDate>
       <itunes:duration>0:34:13</itunes:duration>
       <itunes:image href="https://speechpods.github.io/speeches-2028/emanuel-israel-2026.jpg"/>
-      <itunes:episode>21</itunes:episode>
+      <itunes:episode>24</itunes:episode>
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
@@ -41,7 +41,7 @@
       <pubDate>Sat, 04 Jul 2026 12:00:00 -0700</pubDate>
       <itunes:duration>0:08:45</itunes:duration>
       <itunes:image href="https://speechpods.github.io/speeches-2028/newsom-july4-2026.jpg"/>
-      <itunes:episode>20</itunes:episode>
+      <itunes:episode>23</itunes:episode>
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
@@ -55,7 +55,7 @@
       <pubDate>Sat, 04 Jul 2026 10:00:00 -0400</pubDate>
       <itunes:duration>0:19:15</itunes:duration>
       <itunes:image href="https://speechpods.github.io/speeches-2028/moore-patriotism-2026.jpg"/>
-      <itunes:episode>19</itunes:episode>
+      <itunes:episode>22</itunes:episode>
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
@@ -69,6 +69,48 @@
       <pubDate>Sat, 04 Jul 2026 09:00:00 -0400</pubDate>
       <itunes:duration>0:14:50</itunes:duration>
       <itunes:image href="https://speechpods.github.io/speeches-2028/mamdani-july4-2026.jpg"/>
+      <itunes:episode>21</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Cory Booker — Texas Democratic Convention keynote (Jun 30, 2026)</title>
+      <itunes:author>Speeches: 2028 Dem Prez Primary</itunes:author>
+      <link>https://speechpods.github.io/speeches-2028/e/booker-texas-2026.html</link>
+      <description>Sen. Cory Booker delivers a barn-burning keynote to the Texas Democratic Convention on June 30, 2026 — on the freedoms inherited from past generations, the fights of the present, and his call for a politics of common purpose. Source video: https://www.youtube.com/watch?v=TjaLEuJn9Aw</description>
+      <itunes:summary>Sen. Cory Booker delivers a barn-burning keynote to the Texas Democratic Convention on June 30, 2026 — on the freedoms inherited from past generations, the fights of the present, and his call for a politics of common purpose. Source video: https://www.youtube.com/watch?v=TjaLEuJn9Aw</itunes:summary>
+      <enclosure url="https://speechpods.github.io/speeches-2028/audio/booker-texas-2026.mp3" length="21958147" type="audio/mpeg"/>
+      <guid isPermaLink="false">speeches2028-booker-texas-2026</guid>
+      <pubDate>Tue, 30 Jun 2026 19:00:00 -0500</pubDate>
+      <itunes:duration>0:30:23</itunes:duration>
+      <itunes:image href="https://speechpods.github.io/speeches-2028/booker-texas-2026.jpg"/>
+      <itunes:episode>20</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Chris Murphy — "500 Days" address on the Senate floor (Jun 23, 2026)</title>
+      <itunes:author>Speeches: 2028 Dem Prez Primary</itunes:author>
+      <link>https://speechpods.github.io/speeches-2028/e/murphy-500days-2026.html</link>
+      <description>Sen. Chris Murphy delivers a sweeping half-hour address on the Senate floor on June 23, 2026 — cataloguing what he calls 500 days of the Trump White House run as a '24/7 corruption operation,' and calling on Congress and the public to treat it as the emergency he says it is. Source video: https://www.youtube.com/watch?v=DaQ_95hPhu4</description>
+      <itunes:summary>Sen. Chris Murphy delivers a sweeping half-hour address on the Senate floor on June 23, 2026 — cataloguing what he calls 500 days of the Trump White House run as a '24/7 corruption operation,' and calling on Congress and the public to treat it as the emergency he says it is. Source video: https://www.youtube.com/watch?v=DaQ_95hPhu4</itunes:summary>
+      <enclosure url="https://speechpods.github.io/speeches-2028/audio/murphy-500days-2026.mp3" length="23680020" type="audio/mpeg"/>
+      <guid isPermaLink="false">speeches2028-murphy-500days-2026</guid>
+      <pubDate>Tue, 23 Jun 2026 14:00:00 -0400</pubDate>
+      <itunes:duration>0:32:47</itunes:duration>
+      <itunes:image href="https://speechpods.github.io/speeches-2028/murphy-500days-2026.jpg"/>
+      <itunes:episode>19</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Andy Beshear — Rally in Des Moines, Iowa (Jun 8, 2026)</title>
+      <itunes:author>Speeches: 2028 Dem Prez Primary</itunes:author>
+      <link>https://speechpods.github.io/speeches-2028/e/beshear-desmoines-2026.html</link>
+      <description>Kentucky Gov. Andy Beshear — who keeps winning in a state Trump carried by 31 points — headlines a rally in Des Moines for Iowa gubernatorial candidate Rob Sand on June 8, 2026, making his case for a Democratic Party that leads with faith, decency, and 'explaining our why' across the aisle. Source video: https://www.youtube.com/watch?v=oePRyYCZmtg</description>
+      <itunes:summary>Kentucky Gov. Andy Beshear — who keeps winning in a state Trump carried by 31 points — headlines a rally in Des Moines for Iowa gubernatorial candidate Rob Sand on June 8, 2026, making his case for a Democratic Party that leads with faith, decency, and 'explaining our why' across the aisle. Source video: https://www.youtube.com/watch?v=oePRyYCZmtg</itunes:summary>
+      <enclosure url="https://speechpods.github.io/speeches-2028/audio/beshear-desmoines-2026.mp3" length="20065484" type="audio/mpeg"/>
+      <guid isPermaLink="false">speeches2028-beshear-desmoines-2026</guid>
+      <pubDate>Mon, 08 Jun 2026 19:00:00 -0500</pubDate>
+      <itunes:duration>0:27:46</itunes:duration>
+      <itunes:image href="https://speechpods.github.io/speeches-2028/beshear-desmoines-2026.jpg"/>
       <itunes:episode>18</itunes:episode>
       <itunes:explicit>false</itunes:explicit>
     </item>
